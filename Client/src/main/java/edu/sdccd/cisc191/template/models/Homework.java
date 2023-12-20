@@ -1,10 +1,7 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.DatePicker;
-
-import java.time.LocalDate;
-import java.util.List;
 
 public class Homework implements Urgent{
     private SimpleStringProperty subject;

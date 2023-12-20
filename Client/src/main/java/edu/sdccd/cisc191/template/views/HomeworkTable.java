@@ -1,4 +1,4 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.views;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;

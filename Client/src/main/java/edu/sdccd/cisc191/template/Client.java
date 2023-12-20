@@ -1,5 +1,7 @@
 package edu.sdccd.cisc191.template;
 
+import edu.sdccd.cisc191.template.models.*;
+import edu.sdccd.cisc191.template.views.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -16,7 +18,6 @@ import javafx.application.Platform;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

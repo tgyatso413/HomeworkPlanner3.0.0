@@ -1,4 +1,4 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.models;
 public class DrinkTree {
     Node root;
     Node recent; // user's most recent drink
