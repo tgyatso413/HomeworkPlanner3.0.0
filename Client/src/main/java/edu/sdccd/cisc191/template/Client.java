@@ -210,8 +210,7 @@ public class Client extends Application {
             int index = homeworkTable.getSelectionModel().getSelectedIndex();
             if (index != -1 && completedCheck.isSelected()) {
                 homeworkTable.getItems().remove(index);
-                try {
-                    BufferedReader deleteReader = new BufferedReader(new FileReader("homework.txt"));
+                try {BufferedReader deleteReader = new BufferedReader(new FileReader("homework.txt"));
                     Stream<String> hwDataStream = deleteReader.lines();
                     String hwData = hwDataStream.collect(Collectors.joining("\n"));
                     String[] lines = hwData.split("\n", -1);
@@ -221,6 +220,7 @@ public class Client extends Application {
                             deleteWriter.write(lines[i] + '\n');
                         }
                     }
+
                     deleteReader.close();
                     deleteWriter.close();
                 } catch (IOException ex) {

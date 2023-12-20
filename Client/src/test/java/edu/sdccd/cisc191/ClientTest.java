@@ -6,6 +6,7 @@ import edu.sdccd.cisc191.template.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -71,27 +72,34 @@ public class ClientTest {
     void testStreamHwData() {
         //test if string stream hwData executes filter and forEach
         Homework hw1 = new Homework("testName","testSubject", true, "testDate");
+        Homework hw2 = new Homework("testName2", "testSubject2", false, "testDate2");
         //adds test homework to homework.txt
         try {
             FileWriter writer = new FileWriter("homework.txt",true);
             writer.write(hw1.getHomeworkString() + '\n');
+            writer.write(hw2.getHomeworkString());
             writer.close();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
         //uses same code from client to delete test homework from homework.txt
         try {
+            String test = "";
             BufferedReader deleteReader = new BufferedReader(new FileReader("homework.txt"));
-            Stream<String> hwData = deleteReader.lines();
-            String hwToDelete = deleteReader.readLine();
-            FileWriter fileDeleteWriter = new FileWriter("homework.txt", false);
-            PrintWriter deleteWriter = new PrintWriter(fileDeleteWriter);
-            hwData.filter(s -> !Objects.equals(s, hwToDelete)).forEach(deleteWriter::write);
-            String hwLeftBehind = deleteReader.readLine();
+            Stream<String> hwDataStream = deleteReader.lines();
+            String hwData = hwDataStream.collect(Collectors.joining("\n"));
+            String[] lines = hwData.split("\n", -1);
+            FileWriter deleteWriter = new FileWriter("homework.txt", false);
+            int index = 0;
+            for (int i = 0; i < lines.length; i++) {
+                if (i != index) {
+                    test += lines[i] + '\n';
+                    deleteWriter.write(lines[i] + '\n');
+                }
+            }
+            assertEquals("StringProperty [value: testName2] --StringProperty [value: testSubject2]--false--StringProperty [value: testDate2]\n", test);
             deleteReader.close();
-            fileDeleteWriter.close();
             deleteWriter.close();
-            assertNull(hwLeftBehind);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
