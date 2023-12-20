@@ -1,5 +1,6 @@
-package edu.sdccd.cisc191.template;
+package edu.sdccd.cisc191.template.views;
 
+import edu.sdccd.cisc191.template.models.Time;
 import javafx.animation.KeyFrame;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

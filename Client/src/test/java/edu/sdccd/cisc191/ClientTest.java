@@ -1,11 +1,10 @@
 package edu.sdccd.cisc191;
 
+import edu.sdccd.cisc191.template.models.*;
 import org.junit.jupiter.api.Test;
-import edu.sdccd.cisc191.template.*;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
